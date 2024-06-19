@@ -1,0 +1,16 @@
+name: Workflow Dispatch Demo
+
+on:
+  workflow_dispatch:
+    inputs:
+      MESSAGE:
+        description: "Enter Message"
+        required: true
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "$MESSAGE"  
+        env:
+          MESSAGE: ${{ github.event.inputs.MESSAGE }}
